@@ -1,0 +1,32 @@
+/* Mixins */
+
+// Media Query
+@mixin breakpoint($point) {
+    @if $point==desktop {
+        @media (min-width: 70em) {
+            @content ;
+        }
+    }
+    @else if $point==mobile {
+        @media (max-width: 37.5em) {
+            @content ;
+        }
+    }
+}
+
+// Hover States
+@mixin links ($link, $visited, $hover, $active) {
+    & {
+        color: $link;
+        &:visited {
+            color: $visited;
+        }
+        &:hover {
+            color: $hover;
+        }
+        &:active,
+        &:focus {
+            color: $active;
+        }
+    }
+}

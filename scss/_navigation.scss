@@ -1,0 +1,131 @@
+/* # Navigation Styling */
+
+/* ## Mobile Menu */
+
+.wrapper {
+    display: none;
+    position: relative;
+    overflow: auto;
+    height: 70vh;
+
+    @media only screen and (min-width: 768px) {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px 40px;
+        height: 60px;
+    }
+}
+
+aside.sidebar::before {
+    content: '\2630';
+    width: 100%;
+    font-size: 50px;
+    color: #fff;
+    display: flex;
+    padding-left: 20px;
+
+    @media only screen and (min-width: 768px) {
+        display: none;
+    }
+}
+
+aside.sidebar:hover::before {
+    font-weight: 700;
+    color: #000;
+}
+
+aside.sidebar {
+    width: 100%;
+    height: 60px;
+}
+
+aside.sidebar:hover {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        background-color: $middle-green-yellow;
+
+        @media only screen and (min-width: 768px) {
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+    }
+}
+
+
+/* ## Set menu to display at top */
+
+aside.sidebar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: $middle-green-yellow;
+}
+
+aside h3 {
+    color: $white;
+    font-family: $font-header;
+    padding: 10px 0 10px 20px;
+    @media only screen and (min-width: 768px) {
+        color: $dark-moss-green;
+        cursor: pointer;
+        &:hover {
+            color: $dark-grey;
+        }
+    }
+}
+
+.design-selection,
+.design-archives,
+.zen-resources {
+    background-color: $avocado;
+    @media only screen and (min-width: 768px) {
+        background-color: $middle-green-yellow;
+        &:hover {
+            color: $dark-grey;
+            ul {
+                display: flex;
+            }
+            li {
+                background-color: $dark-moss-green;
+                color: $white;
+                font-family: $font-body;
+                list-style: none;
+            }
+        }
+    }
+    ul {
+        display: flex;
+        width: 100%;
+        flex-flow: column wrap;
+        li {
+            width: 100%;
+            background-color: $dark-moss-green;
+            align-items: flex-start;
+            align-content: space-around;
+            padding: 10px 0 10px 20px;
+            color: $white;
+            font-family: $font-body;
+            font-weight: 300;
+            list-style: none;
+            display: inline-block;
+
+            & a {
+                color: $pale-spring-bud;
+                text-decoration: none;
+                font-family: $font-body;
+
+                &:hover {
+                    color: $yellow;
+                }
+            }
+        }
+    }
+}
+
+
+
+/* ## Desktop Menu */

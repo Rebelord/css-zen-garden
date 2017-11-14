@@ -1,0 +1,102 @@
+/* General Styling */
+
+/* Normalize & Box Sizing */
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    margin: 0;
+    background: $white;
+    p {
+        display:inline-block;
+    }
+}
+
+.page-wrapper {
+    margin-top: 60px;
+}
+
+section.intro {
+    box-sizing: content-box;
+    width: 100%;
+    header,
+    .summary {
+        padding: 0 10%;
+        background-color: $white;
+    }
+    header {
+        padding-top: 10%;
+    }
+    .summary {
+        padding-bottom: 10%;
+    }
+    .preamble {
+        padding: 10%;
+        background-color: $pale-spring-bud;
+    }
+}
+
+.main {
+    box-sizing: content-box;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    @include breakpoint(desktop) {
+        flex-flow: row wrap;
+    }
+    .explanation,
+    .participation,
+    .benefits,
+    .requirements {
+        padding: 5% 10%;
+    }
+    .participation,
+    .benefits,
+    .requirements {
+        background-color: $grey;
+        @include breakpoint(desktop) {
+            width: 25%;
+        }
+    }
+    .explanation {
+        background-color: $middle-green-yellow;
+        width: 100%;
+    }
+    .participation {
+        padding-top: 10%;
+        @include breakpoint(desktop) {
+            padding: 5% 1% 5% 10%;
+        }
+    }
+    .benefits {
+        @include breakpoint(desktop) {
+            padding: 5% 1.5%;
+        }
+    }
+    .requirements {
+        padding-bottom: 10%;
+        @include breakpoint(desktop) {
+            padding: 5% 10% 5% 1%;
+        }
+    }
+}
+
+footer {
+    height: auto;
+    width: 100%;
+    padding: 1% 10%;
+    background: $dark-moss-green;
+}
+
+header,
+.summary {
+    @include breakpoint(desktop) {
+        width: 40%;
+    }
+}
