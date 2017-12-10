@@ -1,43 +1,106 @@
-/* General Styling */
-
 /* Normalize & Box Sizing */
+
 *,
 *:before,
 *:after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+
+/* General Styling */
 
 body {
     margin: 0;
-    background: $white;
+    font-family: $font-body;
+    min-width: 380px;
     p {
-        display:inline-block;
+        display: inline-block;
+    }
+}
+
+
+/*styling for gradient animation @bottom
+*/
+
+body {
+    background: linear-gradient(270deg, #19bd40, #7ab349, #a5f286);
+    background-size: 600% 600%;
+    -webkit-animation: body-gradient 32s ease infinite;
+    animation: body-gradient 32s ease infinite;
+    @-webkit-keyframes body-gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+    @keyframes body-gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+}
+
+h1,
+h2,
+h3
+{
+    font-family: $font-header;
+    font-weight: 800;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.8rem;
+    color: $header;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: $header-sub;
+}
+
+h3 {
+    font-size: 1.7rem;
+    color: $header-sub;
+}
+
+p {
+    font-size: 1.7rem;
+    font-weight: 200;
+    font-size: 1rem;
+    font-weight: 100;
+    line-height: 1.4;
+    padding-top: 10px;
+    color: $body-text;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+a {
+    color: $body-link;
+    &:hover {
+        color: $body-link-hover;
     }
 }
 
 .page-wrapper {
-    margin-top: 60px;
-}
-
-section.intro {
-    box-sizing: content-box;
-    width: 100%;
-    header,
-    .summary {
-        padding: 0 10%;
-        background-color: $white;
-    }
-    header {
-        padding-top: 10%;
-    }
-    .summary {
-        padding-bottom: 10%;
-    }
-    .preamble {
-        padding: 10%;
-        background-color: $pale-spring-bud;
+    @include breakpoint(desktop) {
+        margin-top: 60px;
     }
 }
 
@@ -46,57 +109,146 @@ section.intro {
     width: 100%;
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
+    align-items: center;
+}
+
+
+/* Header, Summary */
+
+section.intro {
+    box-sizing: content-box;
+    background-image: url("images/hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right top;
+    width: 100%;
     @include breakpoint(desktop) {
-        flex-flow: row wrap;
+        background-size: contain;
+        background-position: right top;
     }
-    .explanation,
-    .participation,
-    .benefits,
-    .requirements {
-        padding: 5% 10%;
+    header {
+        padding: 140px 40px 0 40px;
     }
-    .participation,
-    .benefits,
-    .requirements {
-        background-color: $grey;
-        @include breakpoint(desktop) {
-            width: 25%;
+    .summary {
+        padding: 0 40px 140px 40px;
+        p {
+            color: $white;
         }
     }
-    .explanation {
-        background-color: $middle-green-yellow;
-        width: 100%;
-    }
-    .participation {
-        padding-top: 10%;
+    /* Preamble */
+    .preamble {
+        padding: $div-padding;
+        background-color: $pale-spring-bud;
+        h3 {
+            text-align: center;
+            color: $header-sub;
+        }
         @include breakpoint(desktop) {
-            padding: 5% 1% 5% 10%;
+            h3, p {
+                width: 1200px;
+            }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
-    .benefits {
-        @include breakpoint(desktop) {
-            padding: 5% 1.5%;
-        }
+}
+
+header,
+.summary {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    @include breakpoint(desktop) {
+        width: 40%;
+        max-width: 600px;
+        margin-right: 50%;
+        margin-left: auto;
     }
-    .requirements {
-        padding-bottom: 10%;
-        @include breakpoint(desktop) {
-            padding: 5% 10% 5% 1%;
-        }
+}
+
+/* Explanation */
+
+.explanation {
+    background-image: url("images/green-texture.png");
+    background-repeat: repeat;
+    background-size: inherit;
+    padding: $div-padding;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & h3 {
+        color: $white;
+        text-align: center;
+        max-width: 1200px;
     }
+    & p {
+        color: $white;
+        max-width: 1200px;
+    }
+}
+
+
+/*  Participation , Benefits, Requirements */
+
+.participation,
+.benefits,
+.requirements {
+    max-width: 1200px;
+    flex-flow: row wrap;
+    h3 {
+        color: $header-sub;
+        text-align: center;
+    }
+    h3::before {
+        display: block;
+        width: 120px;
+        height: 120px;
+        margin-top: -80px;
+        margin: 0 auto;
+        content: "";
+        background: url("images/css-3-logo.svg") no-repeat 0 0;
+        background-size: 100%; //position: relative;
+    }
+}
+
+.participation,
+.requirements {
+    padding: $div-padding;
+    @include breakpoint(desktop) {
+        padding: $div-less-padding;
+    }
+}
+
+.benefits {
+    padding: 0 40px;
+    @include breakpoint(desktop) {
+        padding: 0;
+    }
+}
+
+.participation h3::before {
+    background: url("images/css-3-logo.svg") no-repeat 0 0;
+}
+
+.benefits h3::before {
+    background: url("images/check.svg") no-repeat 0 0;
+}
+
+.requirements h3::before {
+    background: url("images/list.svg") no-repeat 0 0;
 }
 
 footer {
     height: auto;
     width: 100%;
-    padding: 1% 10%;
+    padding: 40px;
     background: $dark-moss-green;
-}
-
-header,
-.summary {
-    @include breakpoint(desktop) {
-        width: 40%;
+    & a {
+        color: $footer-link;
+        &:hover {
+            color: $footer-link-hover;
+        }
     }
 }

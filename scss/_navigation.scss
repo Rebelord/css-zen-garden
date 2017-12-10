@@ -1,131 +1,218 @@
-/* # Navigation Styling */
+/* # Navigation *********************************************
+************************************************************/
 
-/* ## Mobile Menu */
 
-.wrapper {
-    display: none;
-    position: relative;
-    overflow: auto;
-    height: 70vh;
+/* ## Set menu to display at top 
+********************************/
 
-    @media only screen and (min-width: 768px) {
-        display: flex;
-        justify-content: flex-end;
-        padding: 10px 40px;
+aside.sidebar {
+    width: 100%;
+    background-color: $header-bg-color;
+    @include breakpoint(desktop) {
+        position: fixed;
+        top: 0;
         height: 60px;
     }
 }
 
-aside.sidebar::before {
-    content: '\2630';
-    width: 100%;
-    font-size: 50px;
-    color: #fff;
-    display: flex;
-    padding-left: 20px;
 
-    @media only screen and (min-width: 768px) {
-        display: none;
-    }
-}
+/* # Desktop Menu ***************
+*********************************/
 
-aside.sidebar:hover::before {
-    font-weight: 700;
-    color: #000;
-}
-
-aside.sidebar {
-    width: 100%;
-    height: 60px;
-}
-
-aside.sidebar:hover {
-    .wrapper {
+.wrapper {
+    padding: 15px;
+    @include breakpoint(desktop) {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 100%;
-        background-color: $middle-green-yellow;
-
-        @media only screen and (min-width: 768px) {
-            flex-direction: row;
-            justify-content: flex-end;
-        }
+        flex-flow: row nowrap;
+        justify-content: flex-end;
     }
 }
 
-
-/* ## Set menu to display at top */
-
-aside.sidebar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 60px;
-    background-color: $middle-green-yellow;
+.design-selection h3 {
+    width: 350px;
+    padding-bottom: 19px;
 }
 
-aside h3 {
-    color: $white;
-    font-family: $font-header;
-    padding: 10px 0 10px 20px;
-    @media only screen and (min-width: 768px) {
-        color: $dark-moss-green;
-        cursor: pointer;
-        &:hover {
-            color: $dark-grey;
-        }
+.design-archives h3 {
+    width: 200px;
+    padding-bottom: 19px;
+}
+
+.zen-resources h3 {
+    width: 200px;
+    padding-bottom: 19px;
+    margin-right: 30px;
+}
+
+.design-selection nav ul,
+.design-archives nav ul,
+.zen-resources ul {
+    list-style: none;
+    @include breakpoint(desktop) {
+        display: none;
+        margin-top: -12px;
     }
 }
 
 .design-selection,
 .design-archives,
 .zen-resources {
-    background-color: $avocado;
-    @media only screen and (min-width: 768px) {
-        background-color: $middle-green-yellow;
-        &:hover {
-            color: $dark-grey;
-            ul {
-                display: flex;
-            }
-            li {
-                background-color: $dark-moss-green;
-                color: $white;
-                font-family: $font-body;
-                list-style: none;
-            }
-        }
+    &:hover {
+        color: $nav-link-hover;
+        cursor: pointer;
     }
-    ul {
-        display: flex;
-        width: 100%;
-        flex-flow: column wrap;
-        li {
-            width: 100%;
-            background-color: $dark-moss-green;
-            align-items: flex-start;
-            align-content: space-around;
-            padding: 10px 0 10px 20px;
-            color: $white;
-            font-family: $font-body;
-            font-weight: 300;
-            list-style: none;
-            display: inline-block;
-
-            & a {
-                color: $pale-spring-bud;
-                text-decoration: none;
-                font-family: $font-body;
-
-                &:hover {
-                    color: $yellow;
-                }
-            }
-        }
+    &:active {
+        color: $nav-link-hover;
+        cursor: pointer;
+    }
+    &:focus {
+        color: $nav-link-hover;
+        cursor: pointer;
     }
 }
 
 
+/* Styling dropdown */
 
-/* ## Desktop Menu */
+.design-selection:hover nav ul,
+.design-archives:hover nav ul,
+.zen-resources:hover ul {
+    display: flex;
+    flex-flow: column nowrap;
+    cursor: pointer;
+    background-color: $header-bg-color;
+    
+}
+
+
+/* nav li styles */
+
+.design-selection nav ul li,
+.design-archives nav ul li,
+.zen-resources ul li {
+    padding: 20px;
+    color: $white;
+}
+
+
+/* nav a links styling */
+
+.design-selection nav ul li a,
+.design-archives nav ul li a,
+.zen-resources ul li a {
+    color: $nav-link;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+
+/* nav a:hover links styling */
+
+.design-selection nav ul li a:hover,
+.design-archives nav ul li a:hover,
+.zen-resources ul li a:hover {
+    color: $nav-link-hover;
+}
+
+
+/* # Mobile Menu ***************
+*******************************/
+
+
+/* @media only screen and (max-width: 900px) {
+    // Set wrapper size so that the menu can scroll on mobile device
+    .wrapper {
+        display: none;
+    }
+    // Insert Menu Icon, style, and position it  
+    aside::before {
+        content: '\2630';
+        width: 15%;
+        min-width: 100px;
+        font-size: 55px;
+        color: $dark-moss-green;
+        padding-left: 20px;
+        float: right;
+        margin-top: -12px;
+    }
+    // Add a hover state to the Menu Icon
+    aside:hover::before {
+        font-weight: 700;
+        color: $nav-link-hover;
+    }
+    // Reveal the wrapper when hovering over the icon
+    aside:hover {
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border: 0;
+            height: 70vh;
+            width: 100vw;
+            background-color: $header-bg-color;
+            padding: 0;
+            overflow: scroll;
+        }
+    }
+    .design-selection {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        & h3 {
+            background: $avocado;
+            display: block;
+            width: 100%;
+            color: $white;
+            margin: 0;
+            padding: 20px;
+        }
+        & nav ul {
+            display: block;
+            list-style: none;
+            & li {
+                display: block;
+            }
+        }
+    }
+    .design-archives {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        & h3 {
+            background: $avocado;
+            display: block;
+            width: 100%;
+            color: $white;
+            padding: 20px;
+        }
+        & nav ul {
+            list-style: none;
+            display: block;
+            & li {
+                display: block;
+            }
+        }
+    }
+    .zen-resources {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        & h3 {
+            background: $avocado;
+            display: block;
+            width: 100%;
+            color: $white;
+            padding: 20px;
+        }
+        & ul {
+            list-style: none;
+            display: block;
+            & li {
+                display: block;
+            }
+        }
+    }
+} */
